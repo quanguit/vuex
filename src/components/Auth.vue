@@ -46,111 +46,8 @@
             </li>
           </ul>
 
-          <!-- Login Form -->
-          <form v-show="tab === 'login'">
-            <!-- Email -->
-            <div class="mb-3">
-              <label class="inline-block mb-2" for="email">
-                Email
-                <input type="email" id="email"
-                  class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                    duration-500 focus:outline-none focus:border-black rounded"
-                  placeholder="Enter Email" />
-              </label>
-            </div>
-            <!-- Password -->
-            <div class="mb-3">
-              <label class="inline-block mb-2" for="password">
-                Password
-                <input type="password" id="password"
-                  class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                    duration-500 focus:outline-none focus:border-black rounded"
-                  placeholder="Password" />
-              </label>
-            </div>
-            <button type="submit"
-              class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition
-                hover:bg-purple-700">
-              Submit
-            </button>
-          </form>
-          <!-- Registration Form -->
-          <form v-show="tab === 'register'">
-            <!-- Name -->
-            <div class="mb-3">
-              <label class="inline-block mb-2" for="name">
-                Name
-                <input type="text" id="name"
-                  class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                    duration-500 focus:outline-none focus:border-black rounded"
-                  placeholder="Enter Name" />
-              </label>
-            </div>
-            <!-- Email -->
-            <div class="mb-3">
-              <label class="inline-block mb-2" for="email1">
-                Email
-                <input type="email" id="email1"
-                  class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                    duration-500 focus:outline-none focus:border-black rounded"
-                  placeholder="Enter Email" />
-              </label>
-            </div>
-            <!-- Age -->
-            <div class="mb-3">
-              <label class="inline-block mb-2" for="age">
-                Age
-                <input type="number" id="age"
-                  class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                    duration-500 focus:outline-none focus:border-black rounded" />
-              </label>
-            </div>
-            <!-- Password -->
-            <div class="mb-3">
-              <label class="inline-block mb-2" for="password1">
-                Password
-                <input type="password" id="password1"
-                  class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                    duration-500 focus:outline-none focus:border-black rounded"
-                  placeholder="Password" />
-              </label>
-            </div>
-            <!-- Confirm Password -->
-            <div class="mb-3">
-              <label class="inline-block mb-2" for="cfPassword">
-                Confirm Password
-                <input type="password" id="cfPassword"
-                  class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                    duration-500 focus:outline-none focus:border-black rounded"
-                  placeholder="Confirm Password" />
-              </label>
-            </div>
-            <!-- Country -->
-            <div class="mb-3">
-              <label class="inline-block mb-2" for="country">
-                Country
-                <select id="country"
-                  class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                    duration-500 focus:outline-none focus:border-black rounded">
-                  <option value="USA">USA</option>
-                  <option value="Mexico">Mexico</option>
-                  <option value="Germany">Germany</option>
-                </select>
-              </label>
-            </div>
-            <!-- TOS -->
-            <div class="mb-3 pl-6">
-              <label class="inline-block" for="checkbox">
-                <input type="checkbox" class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
-                Accept terms of service
-              </label>
-            </div>
-            <button type="submit"
-              class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition
-                hover:bg-purple-700">
-              Submit
-            </button>
-          </form>
+          <app-login-form v-if="tab === 'login'" />
+          <app-register-form v-else />
         </div>
       </div>
     </div>
@@ -159,9 +56,14 @@
 
 <script>
 import { mapMutations, mapState } from 'vuex';
+import AppLoginForm from './LoginForm.vue';
+import AppRegisterForm from './RegisterForm.vue';
 
 export default {
   name: 'AuthComponent',
+  components: { 
+    AppLoginForm, AppRegisterForm, 
+  },
   data() {
     return {
       tab: 'login',
