@@ -45,7 +45,6 @@ export default createStore({
       const { commit } = ctx;
       await auth.signInWithEmailAndPassword(payload.email, payload.password);
       commit('toggleAuth');
-      console.log('ctx: ', ctx);
     },
     init_login({ commit }) {
       const user = auth.currentUser;
@@ -57,6 +56,10 @@ export default createStore({
     async logout({ commit }) {
       await auth.signOut();
       commit('toggleAuth');
+
+      // if (payload.route.meta.requiresAuth) {
+      //   payload.router.push({ name: 'home' });
+      // }
     },
   },
   modules: {
