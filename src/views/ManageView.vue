@@ -31,7 +31,7 @@ import { auth, songsCollection } from '@/includes/firebase';
 import CompositionItem from '@/components/CompositionItem.vue';
 
 export default {
-  name: 'ManageComponent',
+  name: 'ManagePage',
   data() {
     return {
       songs: [],
@@ -48,6 +48,7 @@ export default {
     // snapshot.forEach((ss) => this.addSong(ss));
   },
   methods: {
+    // all methods handle in UI
     updateSong(i, values) {
       this.songs[i].modified_name = values.modified_name;
       this.songs[i].genre = values.genre;
@@ -75,7 +76,6 @@ export default {
       const leave = confirm('You have unsaved changes. Are you sure you want or leave?');
       next(leave);
     }
-    next();
   },
   // beforeRouteLeave(to, from, next) {
   //   beforeRouteLeave will run before beforeUnmount run in Upload component 

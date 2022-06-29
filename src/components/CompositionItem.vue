@@ -122,7 +122,7 @@ export default {
       const songRef = storageRef.child(`songs/${this.song.original_name}`);
       await songRef.delete();
       await songsCollection.doc(this.song.docID).delete();
-
+      
       this.removeSong(this.index);
     },
   },

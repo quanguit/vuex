@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/views/HomeView.vue';
 import About from '@/views/AboutView.vue';
 import Manage from '@/views/ManageView.vue';
+import Song from '@/views/SongView.vue';
 import store from '@/store';
 
 const routes = [
@@ -33,6 +34,11 @@ const routes = [
     redirect: { name: 'manage' },
   },
   {
+    name: 'song',
+    path: '/song/:id',
+    component: Song,
+  },
+  {
     path: '/:catchAll(.*)*',
     redirect: { name: 'home' },
   },
@@ -44,6 +50,7 @@ const router = createRouter({
   linkExactActiveClass: 'text-yellow-500',
 });
 
+// checking for meta property in route => example: Manage route
 router.beforeEach((to, from, next) => {
   // console.log(to.matched);
   if (!to.matched.some((record) => record.meta.requiresAuth)) {
